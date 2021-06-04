@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/listProducts', (req,res)=>{ 
     axios.get("https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products",{ headers: {
-      'Authorization': `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`
+      'Authorization': `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`
     }
     
   })
@@ -31,7 +31,7 @@ app.get('/listProducts', (req,res)=>{
 app.get('/productInformation/:id', (req,res)=>{
   const id=req.params.id
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}`,{ headers: {
-      'Authorization':`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`
+      'Authorization':`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`
 }
   })
     .then((response)=>
@@ -49,7 +49,7 @@ app.get('/productStyles/:id', async(req,res)=>{
   const id=req.params.id
   
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}/styles`,{ headers: {
-      'Authorization':`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`
+      'Authorization':`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`
 }
   })
     .then((response)=>
