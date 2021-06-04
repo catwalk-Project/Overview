@@ -8,33 +8,31 @@ const port = process.env.PORT || 3001;
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/listProducts', async(req,res)=>{
-  try{
+app.get('/listProducts', (req,res)=>{ 
     axios.get("https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products",{ headers: {
-      'Authorization':`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`
+      'Authorization': `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`
     }
+    
   })
-    .then((response)=>
+    .then((response)=>{
+    console.log(response)
   res.send(response.data)
-   )
+    })
   .catch((error)=>
   console.log(error)
    )
-  }
-  catch(error){
-    console.log(error)
-  }
+  
+ 
 })
 
 
 
 
-app.get('/productInformation/:id', async(req,res)=>{
+app.get('/productInformation/:id', (req,res)=>{
   const id=req.params.id
-  try{
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}`,{ headers: {
-      'Authorization':`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`
-    }
+      'Authorization':`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`
+}
   })
     .then((response)=>
   res.send(response.data)
@@ -42,10 +40,6 @@ app.get('/productInformation/:id', async(req,res)=>{
   .catch((error)=>
   console.log(error)
    )
-  }
-  catch(error){
-    console.log(error)
-  }
 })
 
 
@@ -53,10 +47,10 @@ app.get('/productInformation/:id', async(req,res)=>{
 
 app.get('/productStyles/:id', async(req,res)=>{
   const id=req.params.id
-  try{
+  
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}/styles`,{ headers: {
-      'Authorization':`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`
-    }
+      'Authorization':`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`
+}
   })
     .then((response)=>
   res.send(response.data)
@@ -64,10 +58,6 @@ app.get('/productStyles/:id', async(req,res)=>{
   .catch((error)=>
   console.log(error)
    )
-  }
-  catch(error){
-    console.log(error)
-  }
 })
 
 

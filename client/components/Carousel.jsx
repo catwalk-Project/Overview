@@ -1,4 +1,5 @@
 const Carousel = (props) => {
+
   const [currentImage, setCurrentImage] = React.useState(0);
 
   const refs = props.styles.reduce((acc, val, i) => {
@@ -53,11 +54,18 @@ const Carousel = (props) => {
       <div className="relative w-full">
         <div className="carousel">
           {sliderControl(true)}
-          {props.styles.map((img, i) => (
-            <div className="w-full flex-shrink-0" key={i} ref={refs[i]}>
-              <img src={img.url} className="w-full object-contain" />
+          {props.boolean ? 
+          props.array.photos.map((element,index)=>{
+            return (
+              <div className="w-full flex-shrink-0" key={index} ref={refs[index]}>
+              <img src={element.thumbnail_url} className="w-full object-contain" />
             </div>
-          ))}
+            )}) :  props.styles.map((img, i) => (
+              <div className="w-full flex-shrink-0" key={i} ref={refs[i]}>
+                <img src={img.url} className="w-full object-contain" />
+              </div>
+            ))
+          })
           {sliderControl()}
         </div>
       </div>
